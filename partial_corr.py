@@ -7,8 +7,8 @@ algorithm is detailed here:
 
     http://en.wikipedia.org/wiki/Partial_correlation#Using_linear_regression
 
-Taking X and Y two variables of interest and Z the matrix with all the variable minus {X, Y}, the algorithm
-can be summarized as
+Taking X and Y two variables of interest and Z the matrix with all the variable minus {X, Y},
+the algorithm can be summarized as
 
     1) perform a normal linear least-squares regression with X as the target and Z as the predictor
     2) calculate the residuals in Step #1
