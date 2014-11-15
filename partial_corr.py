@@ -51,7 +51,7 @@ def partial_corr(C):
     for i in range(p):
         P_corr[i, i] = 1
         for j in range(i+1, p):
-            idx = np.ones(n, dtype=np.bool)
+            idx = np.ones(p, dtype=np.bool)
             idx[i] = False
             idx[j] = False
             beta_i = linalg.lstsq(C[:, idx], C[:, j])[0]
