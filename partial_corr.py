@@ -46,10 +46,8 @@ def partial_corr(C):
     p = C.shape[1]
     P_corr = np.zeros((p, p))
     for i in range(p):
-        for j in range(p):
-            if i == j:
-                P_corr[i,i]=1
-                continue
+        P_corr[i, i] = 1
+        for j in range(i+1, p):
             idx = np.ones(n, dtype=np.bool)
             idx[i] = False
             idx[j] = False
