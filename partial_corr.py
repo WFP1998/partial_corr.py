@@ -25,7 +25,7 @@ Testing: Valentina Borghesani, valentinaborghesani@gmail.com
 """
 
 import numpy as np
-from scipy import stats
+from scipy import stats, linalg
 
 def partial_corr(C):
     """
