@@ -47,7 +47,7 @@ def partial_corr(C):
     
     C = np.asarray(C)
     p = C.shape[1]
-    P_corr = np.zeros((p, p))
+    P_corr = np.zeros((p, p), dtype=np.float)
     for i in range(p):
         P_corr[i, i] = 1
         for j in range(i+1, p):
