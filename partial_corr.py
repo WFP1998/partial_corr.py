@@ -24,6 +24,9 @@ Author: Fabian Pedregosa-Izquierdo, f@bianp.net
 Testing: Valentina Borghesani, valentinaborghesani@gmail.com
 """
 
+import numpy as np
+from scipy import stats
+
 def partial_corr(C):
     """
     Returns the sample linear partial correlation coefficients between pairs of variables in C, controlling 
