@@ -32,11 +32,12 @@ def partial_corr(C):
     Returns the sample linear partial correlation coefficients between pairs of variables in C, controlling 
     for the remaining variables in C.
 
+
     Parameters
     ----------
-    
     C : array-like, shape (n, p)
         Array with the different variables. Each column of C is taken as a variable
+
 
     Returns
     -------
