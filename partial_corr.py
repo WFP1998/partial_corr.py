@@ -1,3 +1,10 @@
+#!/usr/bin/env python
+from sys import stdin, stderr
+from optparse import OptionParser
+import numpy as np
+from scipy import stats, linalg
+
+
 """
 Partial Correlation in Python (clone of Matlab's partialcorr)
 
@@ -22,10 +29,11 @@ the algorithm can be summarized as
 Date: Nov 2014
 Author: Fabian Pedregosa-Izquierdo, f@bianp.net
 Testing: Valentina Borghesani, valentinaborghesani@gmail.com
+
+Date: March 2015:
+Modified by: Ivan Molineris, ivan.molineris@gmail.com
 """
 
-import numpy as np
-from scipy import stats, linalg
 
 def partial_corr(C):
     """
@@ -66,3 +74,42 @@ def partial_corr(C):
             P_corr[j, i] = corr
         
     return P_corr
+
+
+
+def main():
+	usage = '''%prog < STDIN
+Returns the sample linear partial correlation coefficients between pairs of rows in the STDIN, controlling 
+for the remaining variables in STDIN.
+
+The first column of each row of the input matrix is intended as row_id
+	'''
+	parser = OptionParser(usage=usage)
+	
+	options, args = parser.parse_args()
+	
+	if len(args) != 0:
+		exit('Unexpected argument number.')
+	
+	cols_len=None
+	matrix=[]
+	row_ids=[]
+	for line in stdin:
+		cols = line.rstrip().split('\t')
+		row_ids.append(cols.pop(0))
+		cols = [float(c) for c in cols]
+		if cols_len is None:
+			cols_len = len(cols)
+		assert cols_len == len(cols)
+		matrix.append(cols)
+	
+    	matrix = np.asarray(matrix)
+	matrix = matrix.T
+	C=partial_corr(matrix)
+	for i,k in enumerate(row_ids):
+		for j,l in enumerate(row_ids):
+			if j>i:
+				print row_ids[i], row_ids[j], C[i,j]
+
+if __name__ == '__main__':
+	main()

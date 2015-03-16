@@ -1,0 +1,5 @@
+test.in is produced with:
+
+perl -le 'BEGIN{$,="\t"; print "a","b","c"} while(1){ $a=rand(10); $b=$a+rand(1); $c=$b+rand(0.1); print $a,$b,$c}' | head -n 1000 | transpose > test.in
+
+transposte make the matrix transposition.
